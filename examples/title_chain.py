@@ -1,6 +1,6 @@
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
-import random
+import secrets
 
 '''
     generates a list of songs where the first word in each subsequent song
@@ -55,7 +55,7 @@ def make_chain(word):
     while True:
         songs = find_songs_that_start_with_word(word)
         if len(songs) > 0:
-            song = random.choice(songs)
+            song = secrets.choice(songs)
             print(which, song['name'] + " by " + song['artists'][0]['name'])
             which += 1
             word = song['name'].lower().split()[-1]
